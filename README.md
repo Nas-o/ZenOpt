@@ -11,6 +11,8 @@ examples/
   python/qcp/                  # 使用示例
 benchmarks/
   python/qcp/                  # 性能与压力测试脚本
+simulations/
+  python/qcp/                  # 交互仿真
 reports/
   benchmarks/python/qcp/       # 实测结果，非算法源代码
 docs/                          # 说明文档（见下方链接）
@@ -41,6 +43,16 @@ from qcp import Conic2f, Polygon2f, QcpSolver2D, Vec2f
 
 性能指标及局限见 [QCP 性能测试说明](docs/benchmarks/qcp.md)。历史报告保留当时的运行参数，目录迁移不改变历史测量值。已保存报告中的 8 个随机可行性异常是原算法的数值问题；本次目录整理未修改算法。
 
+## 可视化仿真
+
+```bash
+python -m pip install -r simulations/python/qcp/requirements.txt
+python simulations/python/qcp/visualize_qcp.py
+```
+
+可调目标方向、约束位置、半径和顶点数，实时查看可行域、最优点、网格参考目标值及耗时。
+无桌面环境可用 `--headless` 导出方向扫描图和 CSV；说明见 [QCP 可视化仿真](docs/qcp_simulation.md)。
+
 ## 新增算法约定
 
 以 `new_algorithm` 为例：
@@ -48,6 +60,7 @@ from qcp import Conic2f, Polygon2f, QcpSolver2D, Vec2f
 - C++ 实现放在 `cpp/new_algorithm/`。
 - Python 实现放在 `python/new_algorithm/`，通过 `__init__.py` 导出接口。
 - 示例放在 `examples/<语言>/new_algorithm/`。
+- 仿真放在 `simulations/<语言>/new_algorithm/`。
 - 性能测试放在 `benchmarks/<语言>/new_algorithm/`。
 - 性能报告放在 `reports/benchmarks/<语言>/new_algorithm/`，文件名可包含日期和设备名。
 - 说明文档放在 `docs/`；以后新增自动化正确性测试时放在 `tests/<语言>/new_algorithm/`。
