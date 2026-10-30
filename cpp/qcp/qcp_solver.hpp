@@ -71,7 +71,7 @@ public:
     static float evalConic(const Conic2f &conic, const Vec2f &x);
 
     /**
-     * @brief  用半平面 nx·x + ny·y ≤ c 裁剪凸多边形 (Sutherland-Hodgman, 伪代码见文档 5.3.6.2.1)
+     * @brief  用半平面 nx·x + ny·y ≤ c 裁剪凸多边形 
      * @param  poly 输入输出, 顶点按序排列
      */
     static void clipHalfPlane(Polygon2f &poly, float nx, float ny, float c);
